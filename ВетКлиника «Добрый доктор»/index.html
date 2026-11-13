@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ВетКлиника «Добрый доктор» — запись на приём</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">
+        <span class="logo__icon">🐾</span>
+        <div class="logo__text">
+          <span class="logo__title">ВетКлиника</span>
+          <span class="logo__subtitle">«Добрый доктор»</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#about">О клинике</a>
+        <a href="#form">Запись</a>
+        <a href="#list">Мои записи</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ГЕРОЙ-БЛОК -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title">Запишите питомца к врачу онлайн</h1>
+          <p class="hero__text">
+            Заполните форму — и мы перезвоним в течение 15 минут, чтобы
+            подтвердить время визита. Работаем ежедневно с 9:00 до 21:00.
+          </p>
+          <a href="#form" class="btn btn--primary">Записаться на приём</a>
+        </div>
+        <div class="hero__emoji">🐶🐱</div>
+      </div>
+    </section>
+
+    <!-- О КЛИНИКЕ -->
+    <section id="about" class="container section">
+      <h2 class="section__title">Почему выбирают нас</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">🩺</div>
+          <h3 class="card__title">Опытные врачи</h3>
+          <p class="card__text">Терапевты, хирурги и стоматологи со стажем от 8 лет.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🚑</div>
+          <h3 class="card__title">Круглосуточно</h3>
+          <p class="card__text">Неотложная помощь питомцам в любое время суток.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🔬</div>
+          <h3 class="card__title">Своя лаборатория</h3>
+          <p class="card__text">Анализы и УЗИ на месте — результат в день обращения.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ФОРМА ЗАПИСИ -->
+    <section id="form" class="container section">
+      <h2 class="section__title">Запись питомца к врачу</h2>
+      <p class="section__subtitle">Все поля обязательны для заполнения</p>
+
+      <form id="appointmentForm" class="form" novalidate>
+        <div class="form__grid">
+          <!-- Имя питомца -->
+          <div class="field">
+            <label class="field__label" for="petName">Имя питомца</label>
+            <input
+              class="field__input"
+              type="text"
+              id="petName"
+              name="petName"
+              placeholder="Например, Барсик"
+              autocomplete="off"
+            />
+            <span class="field__error" id="petNameError"></span>
+          </div>
+
+          <!-- Возраст питомца -->
+          <div class="field">
+            <label class="field__label" for="petAge">Возраст питомца (лет)</label>
+            <input
+              class="field__input"
+              type="number"
+              id="petAge"
+              name="petAge"
+              placeholder="Например, 3"
+              min="0"
+              max="60"
+              step="0.5"
+            />
+            <span class="field__error" id="petAgeError"></span>
+          </div>
+
+          <!-- Имя владельца -->
+          <div class="field">
+            <label class="field__label" for="ownerName">Имя владельца</label>
+            <input
+              class="field__input"
+              type="text"
+              id="ownerName"
+              name="ownerName"
+              placeholder="Иван Иванов"
+              autocomplete="off"
+            />
+            <span class="field__error" id="ownerNameError"></span>
+          </div>
+
+          <!-- Тип питомца -->
+          <div class="field">
+            <label class="field__label" for="petType">Тип питомца</label>
+            <select class="field__input field__select" id="petType" name="petType">
+              <option value="">— выберите тип —</option>
+              <option value="Кошка">Кошка</option>
+              <option value="Собака">Собака</option>
+              <option value="Птица">Птица</option>
+              <option value="Грызун">Грызун</option>
+              <option value="Рептилия">Рептилия</option>
+              <option value="Другое">Другое</option>
+            </select>
+            <span class="field__error" id="petTypeError"></span>
+          </div>
+
+          <!-- Телефон -->
+          <div class="field">
+            <label class="field__label" for="phone">Номер телефона</label>
+            <input
+              class="field__input"
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+7 (999) 123-45-67"
+              autocomplete="off"
+            />
+            <span class="field__error" id="phoneError"></span>
+          </div>
+
+          <!-- Описание болезни -->
+          <div class="field field--full">
+            <label class="field__label" for="illness">Описание болезни</label>
+            <textarea
+              class="field__input field__textarea"
+              id="illness"
+              name="illness"
+              rows="4"
+              maxlength="500"
+              placeholder="Опишите симптомы: что беспокоит питомца, как давно, была ли температура и т.д."
+            ></textarea>
+            <div class="field__meta">
+              <span class="field__error" id="illnessError"></span>
+              <span class="field__counter"><span id="illnessCounter">0</span>/500</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">
+          Записать на приём
+        </button>
+
+        <div class="success" id="successMessage" hidden>
+          ✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+        </div>
+      </form>
+    </section>
+
+    <!-- СПИСОК ЗАПИСЕЙ -->
+    <section id="list" class="container section">
+      <h2 class="section__title">Мои записи</h2>
+      <p class="section__subtitle">Записи сохраняются в этом браузере</p>
+
+      <p class="empty" id="emptyMessage">Пока записей нет — заполните форму выше.</p>
+      <div class="appointments" id="appointmentsList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 ВетКлиника «Добрый доктор». г. Москва, ул. Зоологическая, 15.</p>
+      <p>Телефон: +7 (495) 000-00-00</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
